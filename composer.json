@@ -1,7 +1,9 @@
 {
     "name": "jsiefer/mage-mock",
     "description": "Mock the Magento Framework",
-    "minimum-stability": "dev",
+    "keywords": ["testing", "unit test", "phpunit", "mocking", "Magento"],
+    "license": "MIT",
+    "version": "0.1.0",
     "authors": [
         {
             "name": "Jacob Siefer",
