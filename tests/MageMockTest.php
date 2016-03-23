@@ -80,7 +80,7 @@ class MageMockTest extends PHPUnit_Framework_TestCase
     public function testMethodMocking()
     {
         $product = new ProductModel();
-        $product->expects($this->once())->method('foobar')->willReturn(100);
+        $product->expects($this->once())->method('foobar')->will($this->returnValue(100));
 
         $result = $product->foobar();
         $this->assertEquals(100, $result);

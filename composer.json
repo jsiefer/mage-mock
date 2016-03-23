@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "jsiefer/class-mocker": "dev-master"
+        "jsiefer/class-mocker": "~0.2"
 
     },
     "require-dev" : {
