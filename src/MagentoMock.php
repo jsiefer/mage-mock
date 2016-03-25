@@ -31,8 +31,8 @@ class MagentoMock implements FrameworkInterface
         $classMocker->registerTrait(Mage_Core_Helper_Abstract::class);
         $classMocker->registerTrait(Mage_Core_Model_Abstract::class);
         $classMocker->registerTrait(Mage_Core_Model_App::class);
+        $classMocker->registerTrait(Varien_Object::class);
 
-        $classMocker->registerBaseClass(Varien_Object::class);
         $classMocker->registerBaseClass(Mage::class);
 
         $classMocker->mock('Mage');

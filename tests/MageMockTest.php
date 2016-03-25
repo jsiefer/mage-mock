@@ -28,6 +28,7 @@ class MageMockTest extends PHPUnit_Framework_TestCase
     public static function setUpBeforeClass()
     {
         self::$mocker = new ClassMocker();
+        self::$mocker->setGenerationDir('./var/generation/');
         self::$mocker->mockFramework(new MagentoMock());
         self::$mocker->enable();
     }
@@ -52,6 +53,13 @@ class MageMockTest extends PHPUnit_Framework_TestCase
         $product->setId(10);
 
         $this->assertEquals(10, $product->getId());
+
+        $product->method('getData')->will($this->returnValue(100));
+        $this->assertEquals(100, $product->getId());
+
+        $product->method('getId')->will($this->returnValue(1000));
+        $this->assertEquals(1000, $product->getId());
+
     }
 
 

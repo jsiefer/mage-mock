@@ -67,12 +67,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jsiefer/class-mocker.git",
-                "reference": "52cc585898b7e67218f5aee2a608350c9b42f38f"
+                "reference": "8ed01e2e7bab1eae872e2a7ee0a4eaa32c5e1f5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jsiefer/class-mocker/zipball/52cc585898b7e67218f5aee2a608350c9b42f38f",
-                "reference": "52cc585898b7e67218f5aee2a608350c9b42f38f",
+                "url": "https://api.github.com/repos/jsiefer/class-mocker/zipball/8ed01e2e7bab1eae872e2a7ee0a4eaa32c5e1f5e",
+                "reference": "8ed01e2e7bab1eae872e2a7ee0a4eaa32c5e1f5e",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 "testing",
                 "unit test"
             ],
-            "time": "2016-03-25 14:35:21"
+            "time": "2016-03-25 17:19:46"
         },
         {
             "name": "phpdocumentor/reflection-docblock",

@@ -10,7 +10,6 @@
 namespace JSiefer\MageMock\Varien;
 
 
-use JSiefer\ClassMocker\Mock\BaseMock;
 use JSiefer\ClassMocker\next;
 use JSiefer\MageMock\StringUtils;
 
@@ -21,7 +20,7 @@ use JSiefer\MageMock\StringUtils;
  * @pattern Varien_Object
  * @sort 100
  */
-class Varien_Object extends BaseMock implements \ArrayAccess
+trait Varien_Object
 {
     /**
      * @var array
@@ -78,7 +77,7 @@ class Varien_Object extends BaseMock implements \ArrayAccess
      *
      * @return next|$this
      */
-    public function __call($name, $arguments)
+    public function ___call($name, $arguments)
     {
         if (strpos($name, 'set') === 0) {
             $field = StringUtils::underscore(substr($name, 3));
@@ -91,7 +90,7 @@ class Varien_Object extends BaseMock implements \ArrayAccess
             return $this->getData($field);
         }
 
-        return parent::__call($name, $arguments);
+        return next::parent();
     }
 
     public function offsetExists($offset)
