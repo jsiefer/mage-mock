@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2ebc399aedd13d96d365e951a44816eb",
+    "hash": "6dddf35d1291b82adff9144f2495fa1b",
     "content-hash": "7ad31aca9dbc5267f8fdc1e49bce648c",
     "packages": [
         {
@@ -67,12 +67,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jsiefer/class-mocker.git",
-                "reference": "8ed01e2e7bab1eae872e2a7ee0a4eaa32c5e1f5e"
+                "reference": "66c38504a1de75a9af9d532aafec320f0d13810f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jsiefer/class-mocker/zipball/8ed01e2e7bab1eae872e2a7ee0a4eaa32c5e1f5e",
-                "reference": "8ed01e2e7bab1eae872e2a7ee0a4eaa32c5e1f5e",
+                "url": "https://api.github.com/repos/jsiefer/class-mocker/zipball/66c38504a1de75a9af9d532aafec320f0d13810f",
+                "reference": "66c38504a1de75a9af9d532aafec320f0d13810f",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 "testing",
                 "unit test"
             ],
-            "time": "2016-03-25 17:19:46"
+            "time": "2016-03-30 20:44:56"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -962,16 +962,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "b5ba64cd67ecd6887f63868fa781ca094bd1377c"
+                "reference": "0047c8366744a16de7516622c5b7355336afae96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/b5ba64cd67ecd6887f63868fa781ca094bd1377c",
-                "reference": "b5ba64cd67ecd6887f63868fa781ca094bd1377c",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/0047c8366744a16de7516622c5b7355336afae96",
+                "reference": "0047c8366744a16de7516622c5b7355336afae96",
                 "shasum": ""
             },
             "require": {
@@ -1007,7 +1007,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-02-23 15:16:06"
+            "time": "2016-03-04 07:55:57"
         },
         {
             "name": "zendframework/zend-code",

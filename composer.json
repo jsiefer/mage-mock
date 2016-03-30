@@ -31,6 +31,10 @@
     "autoload-dev": {
         "psr-4": {
             "JSiefer\\MageMock\\TestClasses\\": "tests/_data/test_classes"
+        },
+        "psr-0": {
+            "Magemock_Sample_" : ["sample-module/src/", "sample-module/tests/"],
+            "" : ["vendor/firegento/magento/lib"]
         }
     },
     "extra": {
