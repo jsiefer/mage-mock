@@ -51,15 +51,15 @@ trait Mage_Core_Model_Abstract
         return $this;
     }
 
-
+/*
     /**
      * @return bool
-     */
+     *//*
     public function isDeleted()
     {
         return false;
     }
-
+*/
 
 
     /**

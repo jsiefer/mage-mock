@@ -23,7 +23,6 @@ use JSiefer\MageMock\Varien\Varien_Object;
  */
 class MagentoMock implements FrameworkInterface
 {
-
     public function register(ClassMocker $classMocker)
     {
         $classMocker->importFootprints(__DIR__ . '/mage.ref.json');
@@ -31,12 +30,15 @@ class MagentoMock implements FrameworkInterface
         $classMocker->registerTrait(Mage_Core_Helper_Abstract::class);
         $classMocker->registerTrait(Mage_Core_Model_Abstract::class);
         $classMocker->registerTrait(Mage_Core_Model_App::class);
-        $classMocker->registerTrait(Varien_Object::class);
+        $classMocker->registerTrait(Varien_Object::class, 'Varien_Object', 100);
 
         $classMocker->registerBaseClass(Mage::class);
 
         $classMocker->mock('Mage');
         $classMocker->mock('Mage_*');
-        $classMocker->mock('Varien_*');
+        $classMocker->mock('Varien_Object');
+
+        // optional mocking if no lib exists
+        $classMocker->mock('Varien_', true);
     }
 }

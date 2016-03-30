@@ -50,15 +50,15 @@ class MageMockTest extends PHPUnit_Framework_TestCase
     public function testModelMocking()
     {
         $product = new Mage_Catalog_Model_Product();
-        $product->setId(10);
+        $product->setTest(10);
 
-        $this->assertEquals(10, $product->getId());
+        $this->assertEquals(10, $product->getTest());
 
         $product->method('getData')->will($this->returnValue(100));
-        $this->assertEquals(100, $product->getId());
+        $this->assertEquals(100, $product->getTest());
 
-        $product->method('getId')->will($this->returnValue(1000));
-        $this->assertEquals(1000, $product->getId());
+        $product->method('getTest')->will($this->returnValue(1000));
+        $this->assertEquals(1000, $product->getTest());
 
     }
 
@@ -72,6 +72,7 @@ class MageMockTest extends PHPUnit_Framework_TestCase
     public function testCustomModel()
     {
         $product = new ProductModel();
+        $product->setIdFieldName('id');
         $product->setId(10);
         $product->save();
 
