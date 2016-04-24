@@ -42,7 +42,7 @@ $classMocker->enable();
 
 It is also recommended to setup the ClassMocker test listener so 
 ClassMock object assertions are validated as well.
-(e.g. ``$test->expect($this->once())->method('test')``)
+(e.g. ``$test->expects($this->once())->method('test')``)
 
 Just add listener to your phpunit.xml
 ```xml
@@ -56,6 +56,7 @@ Just add listener to your phpunit.xml
 Suppose you have the following model:
 
 ```php
+
 /**
  * Class Magemock_Sample_Model_Vehicle
  *
@@ -68,6 +69,16 @@ Suppose you have the following model:
  */
 class Magemock_Sample_Model_Vehicle extends Mage_Core_Model_Abstract
 {
+    /**
+     * Initialize resources
+     *
+     * @return void
+     */
+    protected function _construct()
+    {
+        $this->_init('sample/vehicle');
+    }
+
     /**
      * @return $this
      */
@@ -156,6 +167,24 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * Test _construct() method
+     *
+     * You can call protected methods by using the helper 
+     * function __callProtectedMethod($name, array $args = [])
+     *
+     * @return void
+     * @test
+     */
+    public function validateConstructMethod()
+    {
+        /** @var \Magemock_Sample_Model_Vehicle|\JSiefer\ClassMocker\Mock\BaseMock $product */
+        $product = new \Magemock_Sample_Model_Vehicle();
+        $product->expects($this->once())->method('_init')->with('sample/vehicle');
+
+        // call protected method _construct
+        $product->__callProtectedMethod('_construct');
+    }
 
     /**
      * Test before vehicle save validation
