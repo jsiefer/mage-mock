@@ -3,7 +3,7 @@
     "description": "Mock the Magento Framework",
     "keywords": ["testing", "unit test", "phpunit", "mocking", "Magento"],
     "license": "MIT",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "authors": [
         {
             "name": "Jacob Siefer",
@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "jsiefer/class-mocker": "~0.2"
+        "jsiefer/class-mocker": "~0.3"
 
     },
     "require-dev" : {
@@ -31,6 +31,9 @@
     "autoload-dev": {
         "psr-4": {
             "JSiefer\\MageMock\\TestClasses\\": "tests/_data/test_classes"
+        },
+        "psr-0": {
+            "Magemock_Sample_" : ["sample-module/src/", "sample-module/tests/"]
         }
     },
     "extra": {

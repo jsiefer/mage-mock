@@ -28,6 +28,7 @@ class MageMockTest extends PHPUnit_Framework_TestCase
     public static function setUpBeforeClass()
     {
         self::$mocker = new ClassMocker();
+        self::$mocker->setGenerationDir('./var/generation/');
         self::$mocker->mockFramework(new MagentoMock());
         self::$mocker->enable();
     }
@@ -41,19 +42,36 @@ class MageMockTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Simple product catalog model test
+     * Test method mocking priority
      *
      * @return void
      * @test
      */
-    public function testModelMocking()
+    public function testModelMethodMocking()
     {
         $product = new Mage_Catalog_Model_Product();
-        $product->setId(10);
+        $product->setTest(10);
 
-        $this->assertEquals(10, $product->getId());
+        $this->assertEquals(
+            10,
+            $product->getTest(),
+            'Trait Varien_Object::getData() was not called correctly'
+        );
+
+        $product->method('getData')->will($this->returnValue(100));
+        $this->assertEquals(
+            100,
+            $product->getTest(),
+            'Stub method getData() was not called'
+        );
+
+        $product->method('getTest')->will($this->returnValue(1000));
+        $this->assertEquals(
+            1000,
+            $product->getTest(),
+            'Stub method getTest() was not called'
+        );
     }
-
 
     /**
      * Test extend from mage class and
@@ -64,26 +82,12 @@ class MageMockTest extends PHPUnit_Framework_TestCase
     public function testCustomModel()
     {
         $product = new ProductModel();
+        $product->setIdFieldName('id');
         $product->setId(10);
         $product->save();
 
         $this->assertEquals(10, $product->getId());
         $this->assertEquals('foobar', $product->getMyTestAttribute());
-    }
-
-    /**
-     * Access to PHPUnit method mocking
-     *
-     * @return void
-     * @test
-     */
-    public function testMethodMocking()
-    {
-        $product = new ProductModel();
-        $product->expects($this->once())->method('foobar')->will($this->returnValue(100));
-
-        $result = $product->foobar();
-        $this->assertEquals(100, $result);
     }
 
     /**
@@ -94,13 +98,13 @@ class MageMockTest extends PHPUnit_Framework_TestCase
      */
     public function testProtectedMethods()
     {
+        /** @var ProductModel|\JSiefer\ClassMocker\Mock\BaseMock $product */
         $product = new ProductModel();
         $product->expects($this->once())->method('_init')->with('do/nothing');
 
         // call protected method _construct
-        $product->PROTECTED__construct();
+        $product->__callProtectedMethod('_construct');
     }
-
 
     /**
      * Any static calls to the singleton class Mage should
