@@ -13,7 +13,15 @@
  */
 class Magemock_Sample_Model_Vehicle extends Mage_Core_Model_Abstract
 {
-
+    /**
+     * Initialize resources
+     *
+     * @return void
+     */
+    protected function _construct()
+    {
+        $this->_init('sample/vehicle');
+    }
 
     /**
      * @return $this
@@ -27,7 +35,6 @@ class Magemock_Sample_Model_Vehicle extends Mage_Core_Model_Abstract
         return parent::_beforeSave();
     }
 
-
     /**
      * Is vehicle a bile
      *
@@ -39,5 +46,16 @@ class Magemock_Sample_Model_Vehicle extends Mage_Core_Model_Abstract
                $this->getNumberOfDoors() == 0;
     }
 
-
+    /**
+     * Load bike by name
+     *
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function loadByName($name)
+    {
+        $this->load($name, 'name');
+        return $this;
+    }
 }
