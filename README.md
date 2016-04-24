@@ -192,7 +192,7 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @test
      */
-    public function testBeforeSaveValidation()
+    public function testSaveValidation()
     {
         $vehicle = new \Magemock_Sample_Model_Vehicle();
         $vehicle->setName("foobar");
