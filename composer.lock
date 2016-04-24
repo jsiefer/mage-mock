@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6dddf35d1291b82adff9144f2495fa1b",
-    "content-hash": "7ad31aca9dbc5267f8fdc1e49bce648c",
+    "hash": "536f8a23f1e51011725f52521d7f3ec3",
+    "content-hash": "a06b15c202a89b1a1feeb21672482324",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -63,20 +63,20 @@
         },
         {
             "name": "jsiefer/class-mocker",
-            "version": "dev-develop",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jsiefer/class-mocker.git",
-                "reference": "66c38504a1de75a9af9d532aafec320f0d13810f"
+                "reference": "a240987af12d38ee7dccfd748936fc9179b58aaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jsiefer/class-mocker/zipball/66c38504a1de75a9af9d532aafec320f0d13810f",
-                "reference": "66c38504a1de75a9af9d532aafec320f0d13810f",
+                "url": "https://api.github.com/repos/jsiefer/class-mocker/zipball/a240987af12d38ee7dccfd748936fc9179b58aaf",
+                "reference": "a240987af12d38ee7dccfd748936fc9179b58aaf",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": "~5.5||~5.6",
                 "phpunit/phpunit": "~3.7||~4.0",
                 "zendframework/zend-code": "^3.0"
             },
@@ -108,7 +108,7 @@
                 "testing",
                 "unit test"
             ],
-            "time": "2016-03-30 20:44:56"
+            "time": "2016-04-22 19:18:03"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1011,20 +1011,20 @@
         },
         {
             "name": "zendframework/zend-code",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-code.git",
-                "reference": "09405eb04b7199733219cbf1f0803883a7bab842"
+                "reference": "57cfbcf794a79985278d6308325bc86060af588c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-code/zipball/09405eb04b7199733219cbf1f0803883a7bab842",
-                "reference": "09405eb04b7199733219cbf1f0803883a7bab842",
+                "url": "https://api.github.com/repos/zendframework/zend-code/zipball/57cfbcf794a79985278d6308325bc86060af588c",
+                "reference": "57cfbcf794a79985278d6308325bc86060af588c",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5 || ^7.0",
+                "php": "^5.5 || 7.0.0 - 7.0.4 || ^7.0.6",
                 "zendframework/zend-eventmanager": "^2.6 || ^3.0"
             },
             "require-dev": {
@@ -1032,7 +1032,7 @@
                 "ext-phar": "*",
                 "phpunit/phpunit": "^4.8.21",
                 "squizlabs/php_codesniffer": "^2.5",
-                "zendframework/zend-stdlib": "~2.7"
+                "zendframework/zend-stdlib": "^2.7 || ^3.0"
             },
             "suggest": {
                 "doctrine/annotations": "Doctrine\\Common\\Annotations >=1.0 for annotation features",
@@ -1060,7 +1060,7 @@
                 "code",
                 "zf2"
             ],
-            "time": "2016-01-26 17:57:25"
+            "time": "2016-04-20 17:34:49"
         },
         {
             "name": "zendframework/zend-eventmanager",
@@ -1147,9 +1147,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "jsiefer/class-mocker": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
