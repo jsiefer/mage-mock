@@ -45,6 +45,13 @@ trait Mage_Core_Model_Abstract
         }
 
         $this->_beforeSave();
+
+        $id = $this->getId();
+        if (!$id) {
+            $id = 1;
+        }
+        $this->setId($id);
+
         $this->_afterSave();
         $this->_afterSaveCommit();
 
