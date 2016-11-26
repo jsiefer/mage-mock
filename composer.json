@@ -3,7 +3,7 @@
     "description": "Mock the Magento Framework",
     "keywords": ["testing", "unit test", "phpunit", "mocking", "Magento"],
     "license": "MIT",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "authors": [
         {
             "name": "Jacob Siefer",
