@@ -12,10 +12,11 @@ namespace JSiefer\MageMock;
 
 use JSiefer\ClassMocker\ClassMocker;
 use JSiefer\ClassMocker\FrameworkInterface;
-use JSiefer\MageMock\Mage\Mage;
 use JSiefer\MageMock\Mage\Mage_Core_Helper_Abstract;
 use JSiefer\MageMock\Mage\Mage_Core_Model_Abstract;
 use JSiefer\MageMock\Mage\Mage_Core_Model_App;
+use JSiefer\MageMock\Mage\MageClass;
+use JSiefer\MageMock\Mage\MageFacade;
 use JSiefer\MageMock\Varien\Varien_Data_Collection;
 use JSiefer\MageMock\Varien\Varien_Data_Collection_Db;
 use JSiefer\MageMock\Varien\Varien_Object;
@@ -37,9 +38,14 @@ class MagentoMock implements FrameworkInterface
         $classMocker->registerTrait(Varien_Data_Collection::class, 'Varien_Data_Collection', 100);
         $classMocker->registerTrait(Varien_Data_Collection_Db::class);
 
-        $classMocker->registerBaseClass(Mage::class);
+        $classMocker->registerTrait(MageClass\ModelFactory::class);
+        $classMocker->registerTrait(MageClass\Registry::class);
+
+        $classMocker->registerBaseClass(MageFacade::class);
+
 
         $classMocker->mock('Mage');
+        $classMocker->mock('MageClass');
         $classMocker->mock('Mage_*');
         $classMocker->mock('Varien_Object');
         $classMocker->mock('Varien_Data_Collection');

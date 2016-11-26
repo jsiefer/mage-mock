@@ -52,7 +52,7 @@ trait Varien_Data_Collection
      *
      * @var string
      */
-    protected $_itemObjectClass = 'Varien_Object';
+    protected $_itemObjectClass = '\Varien_Object';
 
     /**
      * Order configuration
@@ -147,7 +147,7 @@ trait Varien_Data_Collection
      * - array() -- get all filters
      *
      * @param string|array $field
-     * @return Varien_Object|array|null
+     * @return \Varien_Object|array|null
      */
     public function getFilter($field)
     {
@@ -260,7 +260,7 @@ trait Varien_Data_Collection
     /**
      * Retrieve collection first item
      *
-     * @return Varien_Object
+     * @return \Varien_Object
      */
     public function getFirstItem()
     {
@@ -277,7 +277,7 @@ trait Varien_Data_Collection
     /**
      * Retrieve collection last item
      *
-     * @return Varien_Object
+     * @return \Varien_Object
      */
     public function getLastItem()
     {
@@ -343,7 +343,7 @@ trait Varien_Data_Collection
      *
      * @param   string $column
      * @param   mixed $value
-     * @return  Varien_Object || null
+     * @return  \Varien_Object || null
      */
     public function getItemByColumnValue($column, $value)
     {
@@ -360,10 +360,10 @@ trait Varien_Data_Collection
     /**
      * Adding item to item array
      *
-     * @param   Varien_Object $item
+     * @param   \Varien_Object $item
      * @return  Varien_Data_Collection
      */
-    public function addItem(Varien_Object $item)
+    public function addItem(\Varien_Object $item)
     {
         $itemId = $this->_getItemId($item);
 
@@ -381,7 +381,7 @@ trait Varien_Data_Collection
     /**
      * Add item that has no id to collection
      *
-     * @param Varien_Object $item
+     * @param \Varien_Object $item
      * @return Varien_Data_Collection
      */
     protected function _addItem($item)
@@ -393,10 +393,10 @@ trait Varien_Data_Collection
     /**
      * Retrieve item id
      *
-     * @param Varien_Object $item
+     * @param \Varien_Object $item
      * @return mixed
      */
-    protected function _getItemId(Varien_Object $item)
+    protected function _getItemId(\Varien_Object $item)
     {
         return $item->getId();
     }
@@ -542,10 +542,10 @@ trait Varien_Data_Collection
     {
         $className = Mage::getConfig()->getModelClassName($className);
         /**
-         * is_subclass_of($className, 'Varien_Object') - Segmentation fault in php 5.2.3
+         * is_subclass_of($className, '\Varien_Object') - Segmentation fault in php 5.2.3
          */
-        /*if (!is_subclass_of($className, 'Varien_Object')) {
-            throw new Exception($className.' does not extends from Varien_Object');
+        /*if (!is_subclass_of($className, '\Varien_Object')) {
+            throw new Exception($className.' does not extends from \Varien_Object');
         }*/
         $this->_itemObjectClass = $className;
         return $this;
@@ -554,7 +554,7 @@ trait Varien_Data_Collection
     /**
      * Retrieve collection empty item
      *
-     * @return Varien_Object
+     * @return \Varien_Object
      */
     public function getNewEmptyItem()
     {
@@ -721,7 +721,7 @@ trait Varien_Data_Collection
      * Retrieve item by id
      *
      * @param   mixed $idValue
-     * @return  Varien_Object
+     * @return  \Varien_Object
      */
     public function getItemById($idValue)
     {

@@ -7,6 +7,8 @@
  *
  * @package  JSiefer\MageMock
  */
+
+
 use JSiefer\ClassMocker\ClassMocker;
 use JSiefer\MageMock\MagentoMock;
 use JSiefer\MageMock\TestClasses\ProductModel;
@@ -112,11 +114,11 @@ class MageMockTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      * @test
-     * @expectedException \BadMethodCallException
-     * @expectedExceptionMessage 'Mage::getModel' was called
      */
     public function testMageShouldThrowException()
     {
-        Mage::getModel('catalog/product');
+        $result = Mage::getModel('catalog/product');
+
+        $this->assertInstanceOf(Mage_Catalog_Model_Product::class, $result);
     }
 }

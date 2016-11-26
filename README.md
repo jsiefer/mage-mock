@@ -40,18 +40,110 @@ $classMocker->mockFramework($magentoFramework);
 $classMocker->enable();
 ```
 
+
 It is also recommended to setup the ClassMocker test listener so 
 ClassMock object assertions are validated as well.
 (e.g. ``$test->expects($this->once())->method('test')``)
+
+Also the MageMock listener will reset the Mage class automatically after each test.
 
 Just add listener to your phpunit.xml
 ```xml
     <listeners>
         <listener class="JSiefer\ClassMocker\TestListener" />
+        <listener class="JSiefer\MageMock\PHPUnit\TestListener" />
     </listeners>
 ```
 
 ## Example
+
+One of the main challenges during unit testing is the Mage god class. MageMock creates a Mock/Stub of
+the Mage god class it self for each test. The mock supports basic calls like ``getModel()``, ``getSingleton()``
+etc and will try to generate a matching Mock object. You can always mock the behavior of those methods
+as well.
+
+The ``Mage`` class will extend from ``MageFacade`` which will delegate all static method calls to
+the current ``MageClass`` instance which gets re-initialized for each test.
+
+
+
+```php
+
+use Mage_Sales_Model_Quote as Quote;
+use Mage_Catalog_Model_Product as Product;
+use Mage_Customer_Model_Customer as Customer;
+
+class MyTest extends JSiefer\MageMock\PHPUnit\TestCase
+{
+    /**
+     * Example for mocking a singleton
+     *
+     * @return void
+     * @test
+     */
+    public function testSingleton()
+    {
+        $customer = new Customer();
+        $customer->setFirstname('Joe');
+    
+        // Create customer session mock
+        $session = $this->getSingleton('catalog/session');
+        $session->expects($this->once())->method('getCustomer')->willReturn($customer);
+        
+        // Now you can use this session, only valid in this test
+        $session = Mage::getSingleton('catalog/session');
+    }
+    
+    /**
+     * Test mocking mage
+     *
+     * @return void
+     * @test
+     */
+    public function testMockingMage()
+    {    
+        // This is the Mage mock
+        $mage = $this->getMage();
+        $mage->expects($this->once())->method('getBaseUrl')->willReturn('foobar');
+        
+        $baseUrl = Mage::getBaseUrl(); // foobar
+    }
+    
+    /**
+     * Creating model mocks on the fly using model factories
+     *
+     * Supose multiple Product models get initiated and you need them to return
+     * a unique id by default.
+     *
+     * @return void
+     * @test
+     */
+    public function testModelFactory()
+    {
+        $idCounter = 1;
+
+        // Register a factory closure for creating class instances
+        // Factories are registred by the full class name 
+        $this->registerModelFactory(Product::class, function() use (&$idCounter) {
+            $instance = new Product();
+            $instance->expects($this->once())->method('getId')->will($this->returnValue($idCounter++));
+
+            return $instance;
+        });
+
+        $productA = Mage::getModel('catalog/product');
+        $productB = Mage::getModel('catalog/product');
+
+        $this->assertNotSame($productA, $productB, "Both product should be two different instances");
+
+        $this->assertEquals(1, $productA->getId());
+        $this->assertEquals(2, $productB->getId());
+    }
+
+}
+```
+
+
 
 Suppose you have the following model:
 
